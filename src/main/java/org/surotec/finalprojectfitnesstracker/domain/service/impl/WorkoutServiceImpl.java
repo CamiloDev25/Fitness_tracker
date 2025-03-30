@@ -7,8 +7,17 @@ import java.util.List;
 
 public class WorkoutServiceImpl implements WorkoutService {
 
+    //Workout creation
     @Override
     public List<Workout> finAll() {
-        return List.of();
+        Workout cardioResistance = new Workout();
+        cardioResistance.setTitle("Cardio Resistance");
+
+        Workout explosiveStrenght = new Workout();
+        explosiveStrenght.setTitle("Explosive Strenght");
+
+        Workout enduranceChallenge = new Workout();
+        enduranceChallenge.setTitle("Endurance Challenge");
+        return List.of(cardioResistance, explosiveStrenght, enduranceChallenge);
     }
 }

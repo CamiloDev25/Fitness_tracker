@@ -1,6 +1,10 @@
 package org.surotec.finalprojectfitnesstracker;
 
+import org.surotec.finalprojectfitnesstracker.application.WorkoutController;
+import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
+
 import javax.sql.rowset.serial.SerialException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +25,10 @@ public class Main {
        selectedOption = input.nextLine();
         switch (selectedOption){
             case "1":
+
+                WorkoutController workoutController = new WorkoutController();
+                List<Workout> workoutList = workoutController.findAll();
+                workoutList.forEach(x -> System.out.println(x.getTitle()));
                 break;
 
             case "2":
