@@ -6,6 +6,7 @@ import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
 import javax.sql.rowset.serial.SerialException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,8 +29,15 @@ public class Main {
 
                 WorkoutController workoutController = new WorkoutController();
                 List<Workout> workoutList = workoutController.findAll();
-                workoutList.forEach(x -> System.out.println(x.getTitle()));
-                break;
+                System.out.println("The available Workouts: ");
+                int i = 1;
+                for (Workout workout : workoutList){
+                    System.out.println( i + ". " + workout.getTitle() + " " + workout.getDescription());
+                    i++;
+                }
+
+               /*WorkoutController workoutControllerDes = new WorkoutController();
+               List<Workout> listDescription = workoutControllerDes.exDescription();*/
 
             case "2":
                 break;

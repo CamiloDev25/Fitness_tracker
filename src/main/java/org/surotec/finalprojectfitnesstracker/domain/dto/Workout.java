@@ -2,6 +2,7 @@ package org.surotec.finalprojectfitnesstracker.domain.dto;
 
 public class Workout {
     private  String title;
+    private String description;
 
     public String getTitle() {
         return title;
@@ -10,4 +11,14 @@ public class Workout {
     public void setTitle(String title){
         this.title=title;
     }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String description){
+        this.description=description;
+    }
+
+
 }

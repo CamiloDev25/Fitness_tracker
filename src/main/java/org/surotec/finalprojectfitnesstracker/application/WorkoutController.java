@@ -12,6 +12,13 @@ public class WorkoutController {
 
     public List<Workout> findAll(){
         //return of training list
-        return workoutService.finAll();
+        return workoutService.findAll();
     }
+
+   /* WorkoutService workoutDescription = new WorkoutServiceImpl();
+    public List<Workout> exDescription(){
+        return workoutDescription.exDescription();
+    }*/
+
+
 }

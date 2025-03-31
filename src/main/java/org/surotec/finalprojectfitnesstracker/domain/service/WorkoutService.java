@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface WorkoutService {
 
-    List<Workout> finAll();
+    List<Workout> findAll();
+
+   // List<Workout> exDescription();
 }
+
+
