@@ -26,81 +26,48 @@ public class Main {
 
         try{
        selectedOption = input.nextLine();
-        switch (selectedOption){
+        switch (selectedOption) {
             case "1":
                 WorkoutController workoutController = new WorkoutController();
                 List<Workout> workoutList = workoutController.findAll();
                 System.out.println("The available Workouts: ");
                 int i = 1;
-                for (Workout workout : workoutList){
-                    System.out.println( i + ". " + workout.getTitle() + " " + workout.getDescription());
+                for (Workout workout : workoutList) {
+                    System.out.println(i + ". " + workout.getTitle() + " " + workout.getDescription());
                     i++;
                 }
 
-                //switch to exercises
-                selectedOption = input.nextLine();
-                switch (selectedOption){
-                    case "1":
-                       ExerciseController exerciseController = new ExerciseController();
-                       List<Exercise> exerciseList = exerciseController.routine();
-                        System.out.println("Workout structure: Cardio Resistance " +
-                                "\n Description: A cardio routine focused on the lower body" +
-                                "\n\n Exercises: ");
+                int workoutChoice;
+                while (true){
+                    System.out.println("Please select a workout by entering its number (1-" + (i - 1) + "): ");
+                    workoutChoice = input.nextInt();
+                input.nextLine();
 
-                        int j = 0;
-                        for (Exercise exercise : exerciseList){
-                            if (j<3){ //show online three elements
-                                System.out.println(exercise.getExercise());
-                                j++;
+                // get workout selected
+                if (workoutChoice >= 1 && workoutChoice < i) {
+                    Workout selectedWorkout = workoutList.get(workoutChoice - 1);
 
-                            }
-                            else{
-                                break;
-                            }
-                        }
-                        System.out.println("\nNotes: Take a 2-minutes break between sets and hydrate adequately");
-                        break;
+                    // workout details
+                    System.out.println("\nWorkout Structure: " + selectedWorkout.getTitle());
+                    System.out.println("Description: " + selectedWorkout.getDescription());
+                    System.out.println("Exercises:");
 
-                    case "2":
-                        ExerciseController exerciseController2 = new ExerciseController();
-                        List<Exercise> exerciseList2 = exerciseController2.routine();
-                        System.out.println("Workout structure: ExplosiveStrenght " +
-                                "\n Description: A full-body explosive strenght routine" +
-                                "\n\n Exercises: ");
+                    // show workout exercises
+                    for (Exercise exercise : selectedWorkout.getExercises()) {
+                        System.out.println(" - " + exercise.getTitle() + ": " + exercise.getDescription());
+                    }
 
-                        int k = 3;
-                        for (int index = k; index < exerciseList2.size(); index++) {
-                            if (k < 6) {
-                                System.out.println(exerciseList2.get(index).getExercise());
-                                k++;
-
-                            } else {
-                                break;
-                            }
-                        }
-                        System.out.println("\nNotes: Remember to have a good position for the exercises");
-                        break;
-
-                    case "3":
-                        ExerciseController exerciseController3 = new ExerciseController();
-                        List<Exercise> exerciseList3 = exerciseController3.routine();
-                        System.out.println("Workout structure: Endurance Challenge " +
-                                "\n Description: An intense routine to improve whole body endurance" +
-                                "\n\n Exercises: ");
-
-                        int l = 6;
-                        for (int index = l; index < exerciseList3.size(); index++) {
-                            if (l < 8) {
-                                System.out.println(exerciseList3.get(index).getExercise());
-                                l++;
-
-                            } else {
-                                break;
-                            }
-                        }
-                        System.out.println("\nNotes: Remember to warm up your joints and stay hydrated");
-                        break;
+                    System.out.println("\nNotes: Ensure proper form and take 1-minute rest between sets.");
+                    System.out.println("Press any key to return to the workout list...");
+                    input.nextLine();
+                } else {
+                    System.out.println("Invalid choice, please select a number between 1 and " + (i - 1) + ".");
                 }
+        }
+                
+               /* selectedOption = input.nextLine();
+
+                workoutList.get(1);*/
                         // the main switch continues
 
             case "2":

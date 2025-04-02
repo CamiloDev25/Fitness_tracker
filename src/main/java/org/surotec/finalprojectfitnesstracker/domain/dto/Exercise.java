@@ -1,22 +1,23 @@
 package org.surotec.finalprojectfitnesstracker.domain.dto;
 
 public class Exercise {
-    private String exercise;
-   // private String repetition;
 
-    public String getExercise() {
-        return exercise;
+    private String title;
+    private String description;
+
+    public String getTitle() {
+        return title;
     }
 
-    public void setExercise(String exercise) {
-        this.exercise = exercise;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-   /* public String getRepetition() {
-        return repetition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRepetition(String repetition) {
-        this.repetition = repetition;
-    }*/
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
