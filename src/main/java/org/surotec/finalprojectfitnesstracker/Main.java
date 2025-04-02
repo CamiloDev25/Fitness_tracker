@@ -25,15 +25,14 @@ public class Main {
             i++;
         }
 
-        //while (true){
-        System.out.println("Please select a workout by entering its number (1-" + (i -1) + "): or if you regreat write back ");
+        System.out.println("Please select a workout by entering its number (1-" + (i -1) + "): or return to the previous menu by typing 'back' ");
         String  userInput = input.nextLine();
         int workoutChoice = 0;
         try {
             workoutChoice = Integer.parseInt(userInput);
 
         }catch (NumberFormatException woC){
-                returnToMainMenu( input, userInput); //----------
+                returnToMainMenu( input, userInput);
         }
 
         // get workout selected
@@ -55,7 +54,7 @@ public class Main {
             }
 
             System.out.println("\nNotes: Ensure proper form and take 1-minute rest between sets.");
-            System.out.println("Press any key to return to the workout list...");
+            System.out.println("\ntype 'back' if you want to return to the previous menu...");
              String message = input.nextLine();
             if ( isUserMovingBack(message)){
                 showWorkout(input);

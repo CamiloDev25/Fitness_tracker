@@ -15,10 +15,7 @@ public class WorkoutController {
         return workoutService.findAll();
     }
 
-   /* WorkoutService workoutDescription = new WorkoutServiceImpl();
-    public List<Workout> exDescription(){
-        return workoutDescription.exDescription();
-    }*/
+   //PENDIENTES: Agregar métodos para registrar y ver logs de workouts
 
 
 }

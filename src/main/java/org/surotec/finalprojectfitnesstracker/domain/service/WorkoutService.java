@@ -8,7 +8,6 @@ public interface WorkoutService {
 
     List<Workout> findAll();
 
-   // List<Workout> exDescription();
 }
 
 
