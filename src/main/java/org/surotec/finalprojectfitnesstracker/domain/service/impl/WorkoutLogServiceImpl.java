@@ -1,5 +1,32 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
-public class WorkoutLogServiceImpl {
+import org.surotec.finalprojectfitnesstracker.domain.dto.User;
+import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
+import org.surotec.finalprojectfitnesstracker.domain.dto.WorkoutLog;
+import org.surotec.finalprojectfitnesstracker.domain.service.WorkoutService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class WorkoutLogServiceImpl implements WorkoutService {
     //implementación de workoutLogService
+
+    private final List<WorkoutLog> logs = new ArrayList<>();
+
+    @Override
+    public void logWorkout(WorkoutLog log) {
+        logs.add(log);
+        // Lógica para calcular tiempo total y calorías quemadas
+    }
+
+    @Override
+    public List<WorkoutLog> getWorkoutLogs(User user) {
+        // Retornar logs filtrados por usuario
+        return logs;
+    }
+
+    @Override
+    public List<Workout> findAll() {
+        return List.of();
+    }
 }
