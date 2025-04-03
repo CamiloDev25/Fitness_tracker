@@ -8,19 +8,21 @@ public class User {
     private String password;
     private boolean isAdmin;
 
-    public User(String firsName, String lastName, String email, String password, boolean isAdmin) {
-        this.firsName = firsName;
+    public User(String firstName, String lastName, String email, String password, boolean isAdmin) {
+        this.firsName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
     }
 
-    public String getFirsName() {
+    public String getFirstName() {
+
         return firsName;
     }
 
-    public void setFirsName(String firsName) {
+    public void setFirstName(String firsName) {
+
         this.firsName = firsName;
     }
 

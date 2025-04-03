@@ -8,10 +8,6 @@ import java.util.List;
 
 public interface WorkoutService {
 
-    void logWorkout(WorkoutLog log);
-
-    List<WorkoutLog> getWorkoutLogs(User user);
-
     List<Workout> findAll();
 
 }

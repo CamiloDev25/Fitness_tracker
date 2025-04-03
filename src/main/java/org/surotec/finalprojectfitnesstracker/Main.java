@@ -77,7 +77,7 @@ public class Main {
                 "\n- Select a workout you have performed and enter the time taken for each exercise" +
                 "\n\n 3. View Logged Workouts " +
                 "\n- Review your workout history, including details and total time for each exercise" +
-                "\n\n 4. Exit");
+                "\n\n 4. Exit \n");
 
         try{
            String selectedOption = input.nextLine();
