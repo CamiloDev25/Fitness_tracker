@@ -1,4 +1,4 @@
-package org.surotec.finalprojectfitnesstracker;
+package org.surotec.finalprojectfitnesstracker;/*package org.surotec.finalprojectfitnesstracker;
 
 import org.surotec.finalprojectfitnesstracker.application.WorkoutController;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
@@ -33,7 +33,7 @@ public class Main {
             workoutChoice = Integer.parseInt(userInput);
 
         }catch (NumberFormatException woC){
-                returnToMainMenu( input, userInput); //----------
+                returnToMainMenu( input, userInput); //si es una cadena cae aqui. El condicional ya está hecho abajo
         }
 
         // get workout selected
@@ -55,7 +55,7 @@ public class Main {
             }
 
             System.out.println("\nNotes: Ensure proper form and take 1-minute rest between sets.");
-            System.out.println("Press any key to return to the workout list...");
+            System.out.println("Write 'back' to return the menu...");
              String message = input.nextLine();
             if ( isUserMovingBack(message)){
                 showWorkout(input);
@@ -87,11 +87,11 @@ public class Main {
                     showWorkout(input);
 
                 case "2":
-                    System.out.println("Log workout selected");
+
                     break;
 
                 case "3":
-                    System.out.println("View logged workouts selected");
+
                     break;
 
                 case "4":
@@ -116,5 +116,82 @@ public class Main {
     private static boolean isUserMovingBack(String text){
         return  text.equals("back");
 
+    }
+}*/
+
+
+import org.surotec.finalprojectfitnesstracker.domain.service.impl.UserServiceImpl;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        UserServiceImpl userService = new UserServiceImpl();
+
+        //LOGICA EN EL MAIN PARA EL REGISTRO DEL USUARIO
+        Scanner scanner = new Scanner(System.in);
+
+        boolean continueRunning = true;
+
+        while (continueRunning) {
+            System.out.println("\nWelcome to the Personal Fitness Tracker!");
+            System.out.println("1. Register");
+            System.out.println("2. Login as User");
+            System.out.println("3. Login as Admin");
+            System.out.println("4. Exit");
+            System.out.print("Please select an option: \n ");
+
+            String option = scanner.nextLine();
+
+            if (option.equals("1")) {
+                try {
+                    System.out.println("Note: the password must have one digit, one uppercase and one lowercase letter and have a minimum length of 8 characters");
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Last name: ");
+                    String lastName = scanner.nextLine();
+                    System.out.print("Email address: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Password: ");
+                    String password = scanner.nextLine();
+                    userService.registerUser(name, lastName, email, password);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (option.equals("2")) {
+                try {
+                    System.out.print("Email address: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Password: ");
+                    String password = scanner.nextLine();
+                    userService.logIn(email, password);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (option.equals("3")) {
+                try {
+                    System.out.print("Admin Email address: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Admin Password: ");
+                    String password = scanner.nextLine();
+                    // Verificar admin
+                    if (email.equals(UserServiceImpl.getEmailAdmin()) && password.equals(UserServiceImpl.getPasswordAdmin())) {
+                        System.out.println("Welcome Admin!");
+                        // Aquí va la logica que tendra el admin
+                    } else {
+                        System.out.println("Invalid admin credentials.");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (option.equals("4")) {
+                System.out.println("Exiting...");
+                continueRunning = false;  // Cambiar la variable a false para salir del bucle
+            } else {
+                System.out.println("Invalid option. Please try again.");
+            }
+        }
+
+        scanner.close();
     }
 }
