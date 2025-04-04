@@ -20,7 +20,7 @@ public class MainMenuServiceImpl implements MenuService {
             System.out.println("\nWelcome to the Personal Fitness Tracker!");
             System.out.println("1. Register");
             System.out.println("2. Login");
-            System.out.println("4. Exit");
+            System.out.println("3. Exit");
             System.out.print("Please select an option: \n ");
 
             String option = input.nextLine();
@@ -51,7 +51,7 @@ public class MainMenuServiceImpl implements MenuService {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-            }  else if (option.equals("4")) {
+            }  else if (option.equals("3")) {
                 System.out.println("Exiting...");
                 continueRunning = false;  // Cambiar la variable a false para salir del bucle
             } else {
@@ -59,7 +59,7 @@ public class MainMenuServiceImpl implements MenuService {
             }
         }
 
-       // input.close();
+        input.close();
     }
 }
 

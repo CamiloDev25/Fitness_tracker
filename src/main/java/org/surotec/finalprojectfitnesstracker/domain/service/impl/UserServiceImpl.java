@@ -45,7 +45,7 @@ public class UserServiceImpl {
         if (!user.getPassword().equals(password)) {
             throw new Exception("The password is incorrect.");
         }
-        System.out.println("Welcome, " + user.getName() + "!");
+        System.out.println("\n Welcome, " + user.getName() + "!");
 
     }
 

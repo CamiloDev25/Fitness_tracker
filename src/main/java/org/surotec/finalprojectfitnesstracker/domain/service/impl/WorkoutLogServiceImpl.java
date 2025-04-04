@@ -30,7 +30,7 @@ public class WorkoutLogServiceImpl implements WorkoutLogService {
             System.out.println((i + 1) + ". " + workouts.get(i).getTitle());
         }
 
-        System.out.print("Select a workout by number: ");
+        System.out.print( "      " + "Select a workout by number: \n");
         int workoutIndex = scanner.nextInt() - 1; // user entrance
         Workout selectedWorkout = workouts.get(workoutIndex);
 
@@ -39,23 +39,28 @@ public class WorkoutLogServiceImpl implements WorkoutLogService {
         workoutLog.setWorkout(selectedWorkout); //asignación de objeto
         workoutLog.setDate(java.time.LocalDate.now().toString()); // current date  (is not functional for now)
 
-        List<WorkoutLogDetail> workoutLogDetailList = new ArrayList<>(); //lista de worko
+        List<WorkoutLogDetail> workoutLogDetailList = new ArrayList<>(); //list of worko
 
         for (Exercise exercise : selectedWorkout.getExercises()) {
-            System.out.print("Enter time taken for " + exercise.getTitle() + " (in minutes): ");
+            System.out.print("Enter the time taken for all the exercises of the " + exercise.getTitle() + " (in minutes): \n ");
             int timeTaken = scanner.nextInt();
-            workoutLog.getExerciseTimes().put(exercise.getTitle(), timeTaken);
-            WorkoutLogDetail workoutLogDetail1 = new WorkoutLogDetail();
-            workoutLogDetail1.setExercise(exercise);
-            workoutLogDetail1.setTimeTaken(timeTaken);
 
-            workoutLogDetailList.add(workoutLogDetail1);
+            //workoutLog.getExerciseTimes().put(exercise.getTitle(), timeTaken);
+           // WorkoutLogDetail workoutLogDetail1 = new WorkoutLogDetail();
+           // workoutLogDetail1.setExercise(exercise);
+          //  workoutLogDetail1.setTimeTaken(timeTaken);
+
+            WorkoutLogDetail workoutLogDetail = new WorkoutLogDetail();
+            workoutLogDetail.setExercise(exercise);
+            workoutLogDetail.setTimeTaken(timeTaken);
+            workoutLogDetailList.add(workoutLogDetail);
+
+          //  workoutLogDetailList.add(workoutLogDetail1);
         }
 
-        workoutLog.setWorkoutLogDetails(workoutLogDetailList); //lista con los valores
-       // TODO el tiempo total calculado se tien que hacer con el logdetailList en lugar del mapa
-        workoutLog.calculateTotalTime(); // total time
 
+        workoutLog.setWorkoutLogDetails(workoutLogDetailList); //lista con los valores
+        workoutLog.calculateTotalTime(); // total time
         return workoutLog;
     }
 

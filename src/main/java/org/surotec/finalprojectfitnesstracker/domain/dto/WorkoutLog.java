@@ -29,7 +29,7 @@ public class WorkoutLog {
     }
 
     public WorkoutLog() {
-        exerciseTimes = new HashMap<>();
+        //  exerciseTimes = new HashMap<>();
     }
 
     public String getWorkoutTitle() {
@@ -40,13 +40,13 @@ public class WorkoutLog {
         this.workoutTitle = workoutTitle;
     }
 
-    public Map<String, Integer> getExerciseTimes() {
+    /*public Map<String, Integer> getExerciseTimes() {
         return exerciseTimes;
     }
 
     public void setExerciseTimes(Map<String, Integer> exerciseTimes) {
         this.exerciseTimes = exerciseTimes;
-    }
+    } */   //se deja de lado el hashmap
 
     public int getTotalTime() {
         return totalTime;
@@ -64,8 +64,14 @@ public class WorkoutLog {
         this.date = date;
     }
 
-    // Method to calculate total time
     public void calculateTotalTime() {
-        totalTime = exerciseTimes.values().stream().mapToInt(Integer::intValue).sum();
+        totalTime = workoutLogDetails.stream()
+                .mapToInt(WorkoutLogDetail::getTimeTaken) // add up the time taken for each one
+                .sum();
     }
+
+    // Method to calculate total time con hashmap
+   /* public void calculateTotalTime() {
+        totalTime = exerciseTimes.values().stream().mapToInt(Integer::intValue).sum();
+    }*/
 }

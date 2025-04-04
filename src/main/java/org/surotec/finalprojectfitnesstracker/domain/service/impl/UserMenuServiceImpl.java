@@ -34,11 +34,18 @@ public class UserMenuServiceImpl implements MenuService {
             switch (selectedOption) {
                 case "1":
                     showWorkout(input);
+                    break;
 
                 case "2":
-                    WorkoutServiceImpl workoutService = new WorkoutServiceImpl(); //
+                    WorkoutServiceImpl workoutService = new WorkoutServiceImpl();
                     WorkoutLogServiceImpl workoutLogService = new WorkoutLogServiceImpl(workoutService);
-                    workoutLogService.logWorkout();
+                    workoutLogService.logWorkout(); // call to method for register the workout
+                    System.out.println("Workout logged successfully! \n");
+                    getMainMenu(input); //return to main menu
+
+                    /*WorkoutServiceImpl workoutService = new WorkoutServiceImpl(); //
+                    WorkoutLogServiceImpl workoutLogService = new WorkoutLogServiceImpl(workoutService);
+                    workoutLogService.logWorkout();*/
                     break;
 
                 case "3":
