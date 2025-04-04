@@ -11,6 +11,7 @@ public class UserServiceImpl {
     private static final String EMAIL_ADMIN = "admin@fitness.com";
     private static final String PASSWORD_ADMIN = "Admin123";
 
+
     public static String getEmailAdmin(){
         return EMAIL_ADMIN;
     }
@@ -45,6 +46,7 @@ public class UserServiceImpl {
             throw new Exception("The password is incorrect.");
         }
         System.out.println("Welcome, " + user.getName() + "!");
+
     }
 
     private void validateEmail(String email) throws Exception {

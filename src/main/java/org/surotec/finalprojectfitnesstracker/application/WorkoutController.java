@@ -15,10 +15,4 @@ public class WorkoutController {
         return workoutService.findAll();
     }
 
-   /* WorkoutService workoutDescription = new WorkoutServiceImpl();
-    public List<Workout> exDescription(){
-        return workoutDescription.exDescription();
-    }*/
-
-
 }
