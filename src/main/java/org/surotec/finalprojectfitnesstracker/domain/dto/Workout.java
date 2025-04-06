@@ -7,6 +7,12 @@ public class Workout {
     private String description;
     private List<Exercise> exercises;
 
+    public Workout(String title, String description, List<Exercise> exercises) {
+        this.title = title;
+        this.description = description;
+        this.exercises = exercises;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -1,7 +1,6 @@
 package org.surotec.finalprojectfitnesstracker;
 import org.surotec.finalprojectfitnesstracker.domain.service.impl.MainMenuServiceImpl;
 
-
 import java.util.Scanner;
 
 public class Main {

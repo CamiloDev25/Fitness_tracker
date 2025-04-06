@@ -4,7 +4,6 @@ package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
 import org.surotec.finalprojectfitnesstracker.domain.dto.WorkoutLog;
-import org.surotec.finalprojectfitnesstracker.domain.dto.WorkoutLogDetail;
 import org.surotec.finalprojectfitnesstracker.domain.service.WorkoutService;
 
 import java.util.ArrayList;
