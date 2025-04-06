@@ -1,23 +1,24 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
-import org.surotec.finalprojectfitnesstracker.application.WorkoutController;
+//import org.surotec.finalprojectfitnesstracker.application.WorkoutController;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
+import org.surotec.finalprojectfitnesstracker.domain.service.IGetWorkouts;
 import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
 
 import javax.sql.rowset.serial.SerialException;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.surotec.finalprojectfitnesstracker.utility.Utility.isUserMovingBack;
-
 public class UserMenuServiceImpl implements MenuService {
-    @Override
-    public void printMenu(Scanner input) {
-        getMainMenu(input);
+
+    private IGetWorkouts getWorkouts;
+
+    public UserMenuServiceImpl(IGetWorkouts getWorkouts) {
+        this.getWorkouts = getWorkouts;
     }
 
-    private void getMainMenu(Scanner input) {
+    public void printMenu(Scanner input) {
 
         System.out.println("Welcome to Your Personal Fitness Tracker \n" +
                 "\n Please select an option: " +
@@ -33,11 +34,46 @@ public class UserMenuServiceImpl implements MenuService {
             String selectedOption = input.nextLine();
             switch (selectedOption) {
                 case "1":
-                    showWorkout(input);
+                    List<Workout> workouts = getWorkouts.searchWorkouts();
+                    System.out.println("Available workouts");
+                    int i = 1;
+                    for (Workout workout: workouts){
+                        System.out.println( i + ". "+ workout.getTitle() + " - " + workout.getDescription());
+                        i++;
+                    }
+                    System.out.println("Enter the number of a workout to view its structure, or type 'back' to return");
+                    selectedOption = input.nextLine();
+                    switch (selectedOption){
+                        case "back":
+                            break;
+                        default:
+
+                            try {
+                                int value = Integer.parseInt(selectedOption);
+                                if (value<=i && value>0){
+                                    Workout workout = workouts.get(value);
+                                    System.out.println("Workout structure: " + workout.getTitle()+ "\n" + "Description: " + workout.getDescription() +
+                                            "\n\nExercises");
+                                    for (Exercise exercise: workout.getExercises()){
+                                        System.out.println("- " + exercise.getTitle() + ": " + exercise.getDescription());
+                                    }
+                                    System.out.println("\nNotes: Ensure proper form and take 1-minute rest between sets.");
+                                    System.out.println("Press any key return to the workout list... ");
+                                    input.nextLine();
+                                    break;
+
+                                }else {
+                                    System.out.println("Choose a correct option");
+                                }
+                            }catch (Exception e){
+                                System.out.println("Choose a correct option");
+                            }
+                    }
+
                     break;
 
                 case "2":
-                    WorkoutServiceImpl workoutService = new WorkoutServiceImpl();
+                  /*  WorkoutServiceImpl workoutService = new WorkoutServiceImpl();
                     WorkoutLogServiceImpl workoutLogService = new WorkoutLogServiceImpl(workoutService);
                     workoutLogService.logWorkout(); // call to method for register the workout
                     System.out.println("Workout logged successfully! \n");
@@ -46,7 +82,7 @@ public class UserMenuServiceImpl implements MenuService {
                     WorkoutServiceImpl workoutService = new WorkoutServiceImpl(); //
                     WorkoutLogServiceImpl workoutLogService = new WorkoutLogServiceImpl(workoutService);
                     workoutLogService.logWorkout();
-                    break;
+                    break;*/
 
                 case "3":
 
@@ -66,7 +102,7 @@ public class UserMenuServiceImpl implements MenuService {
         ;
     }
 
-    private void showWorkout(Scanner input) {
+   /* private void showWorkout(Scanner input) {
         WorkoutController workoutController = new WorkoutController();
         List<Workout> workoutList = workoutController.findAll();
         System.out.println("The available Workouts: ");
@@ -125,6 +161,6 @@ public class UserMenuServiceImpl implements MenuService {
         } else {
             System.out.println("Invalid choice, please select a number between 1 and " + (i - 1) + ".");
         }
-    }
+    }*/
 }
 

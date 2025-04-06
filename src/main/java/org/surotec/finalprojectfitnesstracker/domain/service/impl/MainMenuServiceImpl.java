@@ -1,6 +1,7 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
+import org.surotec.finalprojectfitnesstracker.domain.service.IGetWorkouts;
 import org.surotec.finalprojectfitnesstracker.domain.service.IUserLogin;
 import org.surotec.finalprojectfitnesstracker.domain.service.IUserRegister;
 import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
@@ -11,17 +12,18 @@ public class MainMenuServiceImpl implements MenuService {
 
     private IUserRegister userRegister;
     private IUserLogin userLogin;
+    private IGetWorkouts getWorkouts;
 
-    public MainMenuServiceImpl(IUserRegister userRegister, IUserLogin userLogin) {
+    public MainMenuServiceImpl(IUserRegister userRegister, IUserLogin userLogin, IGetWorkouts getWorkouts) {
         this.userRegister = userRegister;
         this.userLogin = userLogin;
+        this.getWorkouts = getWorkouts;
     }
 
     @Override
     public void printMenu(Scanner input) {
-        //  UserServiceImpl userService = new UserServiceImpl();
-        //UserMenuServiceImpl userMenuService = new UserMenuServiceImpl();
-
+        // UserServiceImpl userService = new UserServiceImpl();
+        UserMenuServiceImpl userMenuService = new UserMenuServiceImpl(getWorkouts);
 
         boolean continueRunning = true;
 
@@ -60,6 +62,7 @@ public class MainMenuServiceImpl implements MenuService {
                   User user = userLogin.loginUser(email, password);
                     if (user != null && user.isLogin()){
                         System.out.println("The user is register");
+                        userMenuService.printMenu(input);
                     }else {
                         System.out.println("The user doesn't exist");
                     }
