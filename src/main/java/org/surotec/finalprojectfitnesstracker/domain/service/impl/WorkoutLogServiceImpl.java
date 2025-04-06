@@ -11,9 +11,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WorkoutLogServiceImpl implements WorkoutLogService {
+    @Override
+    public WorkoutLog logWorkout() {
+        return null;
+    }
+}
 
 
-    private WorkoutService workoutService; // get workouts
+   /*private WorkoutService workoutService; // get workouts
 
     public WorkoutLogServiceImpl(WorkoutService workoutService) {
         this.workoutService = workoutService;
@@ -63,4 +68,4 @@ public class WorkoutLogServiceImpl implements WorkoutLogService {
         return workoutLog;
     }
 
-}
+}*/

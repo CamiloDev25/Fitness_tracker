@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class UserServiceImpl {
+/*public class UserServiceImpl {
 
     private Map<String, User> users = new HashMap<>();
     private static final String EMAIL_ADMIN = "admin@fitness.com";
@@ -71,8 +71,7 @@ public class UserServiceImpl {
             throw new Exception("The password must contain at least one digit.");
         }
     }
-    }
-
+    }*/
 
 
 

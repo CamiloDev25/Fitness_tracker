@@ -7,7 +7,7 @@ import org.surotec.finalprojectfitnesstracker.domain.service.WorkoutService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutServiceImpl implements WorkoutService {
+/*public class WorkoutServiceImpl implements WorkoutService {
 
     //Workout creation
     @Override
@@ -82,4 +82,4 @@ public class WorkoutServiceImpl implements WorkoutService {
         return List.of(cardioResistance, explosiveStrenght, enduranceChallenge);
     }
 
-}
+}*/

@@ -6,7 +6,7 @@ import org.surotec.finalprojectfitnesstracker.domain.service.impl.WorkoutLogServ
 
 import java.util.Scanner;
 
-public class UserController {
+/*public class UserController {
     private  WorkoutLogService workoutLogService;
 
     public UserController(WorkoutLogService workoutLogService){
@@ -20,4 +20,4 @@ public class UserController {
         System.out.println("Workout Logged: " +workoutLog.getWorkoutTitle());
         System.out.println("Total time: " + workoutLog.getTotalTime() + " minutes");
     }
-}
+}*/

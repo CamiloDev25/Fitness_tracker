@@ -6,7 +6,7 @@ public class User {
         private String lastName;
         private String email;
         private String password;
-        private boolean isLogin;
+        private boolean isLogin = false;
         private String role;
 
     public User(String name, String lastName, String email, String password, String role) {
@@ -15,6 +15,18 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
     }
 
     @Override

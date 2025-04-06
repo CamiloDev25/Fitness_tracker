@@ -1,17 +1,26 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
+import org.surotec.finalprojectfitnesstracker.domain.dto.User;
+import org.surotec.finalprojectfitnesstracker.domain.service.IUserLogin;
+import org.surotec.finalprojectfitnesstracker.domain.service.IUserRegister;
 import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
 
 import java.util.Scanner;
 
 public class MainMenuServiceImpl implements MenuService {
 
+    private IUserRegister userRegister;
+    private IUserLogin userLogin;
+
+    public MainMenuServiceImpl(IUserRegister userRegister, IUserLogin userLogin) {
+        this.userRegister = userRegister;
+        this.userLogin = userLogin;
+    }
 
     @Override
     public void printMenu(Scanner input) {
-        UserServiceImpl userService = new UserServiceImpl();
-        UserMenuServiceImpl userMenuService = new UserMenuServiceImpl();
-
+        //  UserServiceImpl userService = new UserServiceImpl();
+        //UserMenuServiceImpl userMenuService = new UserMenuServiceImpl();
 
 
         boolean continueRunning = true;
@@ -36,7 +45,9 @@ public class MainMenuServiceImpl implements MenuService {
                     String email = input.nextLine();
                     System.out.print("Password: ");
                     String password = input.nextLine();
-                    userService.registerUser(name, lastName, email, password);
+                    String role = "Usuario";
+                    userRegister.registerUser(name, lastName, email, password, role);
+
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -46,12 +57,17 @@ public class MainMenuServiceImpl implements MenuService {
                     String email = input.nextLine();
                     System.out.print("Password: ");
                     String password = input.nextLine();
-                    userService.logIn(email, password);
-                userMenuService.printMenu(input);
+                  User user = userLogin.loginUser(email, password);
+                    if (user != null && user.isLogin()){
+                        System.out.println("The user is register");
+                    }else {
+                        System.out.println("The user doesn't exist");
+                    }
+
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-            }  else if (option.equals("3")) {
+            } else if (option.equals("3")) {
                 System.out.println("Exiting...");
                 continueRunning = false;  // Cambiar la variable a false para salir del bucle
             } else {

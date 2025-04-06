@@ -1,0 +1,6 @@
+Running,"3 sets 5 minutes of steady pace running"
+Cycling,"3 sets 10 minutes of moderate cycling"
+Swimming,"4 sets 2 laps of freestyle swimming"
+Jump Rope,"4 sets 1 minute of jump rope"
+Push-Ups,"4 sets 12 reps of standard push-ups"
+Squats,"3 sets 15 reps of bodyweight squats"

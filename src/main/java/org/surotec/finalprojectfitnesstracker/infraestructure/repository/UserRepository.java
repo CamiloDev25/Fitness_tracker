@@ -3,10 +3,7 @@ package org.surotec.finalprojectfitnesstracker.infraestructure.repository;
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
 import org.surotec.finalprojectfitnesstracker.domain.repository.IUserRepository;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class UserRepository implements IUserRepository {
 
@@ -14,12 +11,21 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public User save(User user) {
-        try (FileWriter writer = new FileWriter(fileName, true)) { // true = modo append
-            writer.write(user.toString() + "\n");
-            System.out.println("User saved Succesfuly.");
-            return user;
+        File file = new File(fileName);
+        try {
+            if (!file.exists()) {
+                file.createNewFile(); // crea el archivo si no existe
+            }
+
+            try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(user.toString() + "\n");
+                System.out.println("User saved successfully.");
+                return user;
+            }
+
         } catch (IOException e) {
             System.out.println("Error saving user: " + e.getMessage());
+            System.out.println("Tried to write to: " + file.getAbsolutePath());
             return null;
         }
     }

@@ -1,12 +1,12 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
-import org.surotec.finalprojectfitnesstracker.application.ExerciseController;
+//import org.surotec.finalprojectfitnesstracker.application.ExerciseController;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseServiceImpl implements ExerciseService {
+/*public class ExerciseServiceImpl implements ExerciseService {
 
 
     @Override
@@ -48,4 +48,4 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 
     }
-}
+}*/

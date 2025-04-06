@@ -1,6 +1,6 @@
 package org.surotec.finalprojectfitnesstracker.application;
 
-import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
+/*import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
 import org.surotec.finalprojectfitnesstracker.domain.service.WorkoutService;
 import org.surotec.finalprojectfitnesstracker.domain.service.impl.WorkoutServiceImpl;
 
@@ -15,4 +15,4 @@ public class WorkoutController {
         return workoutService.findAll();
     }
 
-}
+}*/

@@ -43,9 +43,9 @@ public class UserMenuServiceImpl implements MenuService {
                     System.out.println("Workout logged successfully! \n");
                     getMainMenu(input); //return to main menu
 
-                    /*WorkoutServiceImpl workoutService = new WorkoutServiceImpl(); //
+                    WorkoutServiceImpl workoutService = new WorkoutServiceImpl(); //
                     WorkoutLogServiceImpl workoutLogService = new WorkoutLogServiceImpl(workoutService);
-                    workoutLogService.logWorkout();*/
+                    workoutLogService.logWorkout();
                     break;
 
                 case "3":
@@ -127,5 +127,4 @@ public class UserMenuServiceImpl implements MenuService {
         }
     }
 }
-
 
