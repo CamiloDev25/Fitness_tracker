@@ -1,10 +1,7 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
-import org.surotec.finalprojectfitnesstracker.domain.service.IGetWorkouts;
-import org.surotec.finalprojectfitnesstracker.domain.service.IUserLogin;
-import org.surotec.finalprojectfitnesstracker.domain.service.IUserRegister;
-import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
+import org.surotec.finalprojectfitnesstracker.domain.service.*;
 
 import java.util.Scanner;
 
@@ -13,17 +10,18 @@ public class MainMenuServiceImpl implements MenuService {
     private IUserRegister userRegister;
     private IUserLogin userLogin;
     private IGetWorkouts getWorkouts;
+    private IWorkoutLog workoutLog;
 
-    public MainMenuServiceImpl(IUserRegister userRegister, IUserLogin userLogin, IGetWorkouts getWorkouts) {
+    public MainMenuServiceImpl(IUserRegister userRegister, IUserLogin userLogin, IGetWorkouts getWorkouts, IWorkoutLog workoutLog) {
         this.userRegister = userRegister;
         this.userLogin = userLogin;
         this.getWorkouts = getWorkouts;
+        this.workoutLog = workoutLog;
     }
 
     @Override
     public void printMenu(Scanner input) {
-        // UserServiceImpl userService = new UserServiceImpl();
-        UserMenuServiceImpl userMenuService = new UserMenuServiceImpl(getWorkouts);
+
 
         boolean continueRunning = true;
 
@@ -62,6 +60,7 @@ public class MainMenuServiceImpl implements MenuService {
                   User user = userLogin.loginUser(email, password);
                     if (user != null && user.isLogin()){
                         System.out.println("The user is register");
+                        UserMenuServiceImpl userMenuService = new UserMenuServiceImpl(getWorkouts, workoutLog, user);
                         userMenuService.printMenu(input);
                     }else {
                         System.out.println("The user doesn't exist");
@@ -80,7 +79,10 @@ public class MainMenuServiceImpl implements MenuService {
 
         input.close();
     }
-}
+
+        }
+        // UserServiceImpl userService = new UserServiceImpl();
+
 
 
 

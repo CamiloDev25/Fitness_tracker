@@ -33,5 +33,21 @@ public class User {
     public String toString() {
         return email +  "," + password + "," + name + ","+ lastName + "," + role;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }
 
