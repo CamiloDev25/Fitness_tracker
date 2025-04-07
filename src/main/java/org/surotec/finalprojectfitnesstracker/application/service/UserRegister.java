@@ -28,11 +28,14 @@ public class UserRegister implements IUserRegister {
 
         }
 
-        User user = userRepository.find(email);
-        if (user == null) {
+       // User user = userRepository.find(email);
+        if (userRepository.find(email) != null ) {
+            System.out.println("Funcuiones por favor");
+            return null;
+
+        }else {
             return userRepository.save(new User(name, lastName, email, password, role));
         }
-        return null;
     }
 
     private boolean isValidEmail(String email) {
