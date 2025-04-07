@@ -18,13 +18,14 @@ public class UserRegister implements IUserRegister {
     }
 
     @Override
-    public User registerUser(String email, String password, String name, String lastName, String role) {
+    public User registerUser(String name, String lastName, String email, String password, String role) {
         if (!isValidEmail(email)) {
             throw new IllegalArgumentException("Invalid email format. Please provide a valid email address.");
         }
 
-        if (isValidPassword(password)) {
+        if (!isValidPassword(password)) {
             throw new IllegalArgumentException("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one digit.");
+
         }
 
         User user = userRepository.find(email);

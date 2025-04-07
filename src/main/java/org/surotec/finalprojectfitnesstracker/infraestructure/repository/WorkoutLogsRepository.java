@@ -2,7 +2,7 @@ package org.surotec.finalprojectfitnesstracker.infraestructure.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-//import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
+
 import org.surotec.finalprojectfitnesstracker.domain.dto.WorkoutLog;
 import org.surotec.finalprojectfitnesstracker.domain.repository.IWorkoutLogsRepository;
 
