@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)){
 
         IUserRepository userRepository = new UserRepository();
         IWorkoutRepository workoutRepository = new WorkoutRepository();
@@ -30,9 +30,11 @@ public class Main {
         IGetWorkouts getWorkouts = new GetWorkouts(workoutRepository);
         IWorkoutLog workoutLog = new LogWorkout(workoutLogsRepository);
 
-
         MainMenuServiceImpl mainMenuService = new MainMenuServiceImpl(userRegister, userLogin, getWorkouts, workoutLog);
         mainMenuService.printMenu(input);
+        }catch (Exception e){
+            System.out.println("There was an error in the application");
+        }
 
     }
 }

@@ -49,6 +49,7 @@ public class MainMenuServiceImpl implements MenuService {
                     userRegister.registerUser(name, lastName, email, password, role);
 
                 } catch (Exception e) {
+                    e.printStackTrace();
                     System.out.println(e.getMessage());
                 }
             } else if (option.equals("2")) {

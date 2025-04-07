@@ -17,8 +17,9 @@ public class UserRepository implements IUserRepository {
                 file.createNewFile(); // crea el archivo si no existe
             }
 
-            try (FileWriter writer = new FileWriter(file, true)) {
-                writer.write(user.toString() + "\n");
+            try (BufferedWriter writer = new BufferedWriter (new FileWriter(file, true))) {
+                writer.write(user.toString());
+                writer.newLine();
                 System.out.println("User saved successfully.");
                 return user;
             }

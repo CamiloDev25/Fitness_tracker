@@ -162,9 +162,10 @@ public class UserMenuServiceImpl implements MenuService {
                             workoutLogs.sort(Comparator.comparing(WorkoutLog::getDate));
                             for (WorkoutLog workoutLog1 : workoutLogs) {
                                 System.out.println(i + "." + " Date: " + workoutLog1.getDate() + "\nWorkout: " + workoutLog1.getWorkoutTitle());
+                                i++;
                             }
-                            System.out.println("Enter the number of a workout to view more details, or type 'back' to return");
                             String select = input.nextLine();
+
 
                             try {
                                 int value = Integer.parseInt(select);
@@ -197,8 +198,9 @@ public class UserMenuServiceImpl implements MenuService {
 
                     case "4":
                         System.out.println("Exiting the program. Goodbye");
+                        showMenu = false;
                         input.close();
-                        return;
+                        break;
 
                     default:
                         throw new SerialException("The option is not available");

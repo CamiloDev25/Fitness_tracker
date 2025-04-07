@@ -4,4 +4,8 @@ pedro@gmail.com,Pedro2020,pedro,perez,Usuario
 pedro@gmail.com,Pedro2020,pedro,perez,Usuario
 juanita@gmail.com,Juanita2020,Juanita,marin,Usuariojuansito@gmail.com,Juansito2020,juansito,marin,Usuario
 gerito@gmail.com,Gerito2020,gerito,marin,Usuario
-mateo@gmail.com,Mateo2020,mateo,marin,Usuariomatasanos@gmail.com,Matasanos2020,matasanos,marin,Usuariopablo@gmail.com,Pablo123,pablo,contreras,Usuario
+mateo@gmail.com,Mateo2020,mateo,marin,Usuariomatasanos@gmail.com,Matasanos2020,matasanos,marin,Usuariopablo@gmail.com,Pablo123,pablo,contreras,Usuariojesus@gmail.com,Jesus2020,jesus,villa,Usuario
+belen@gmail.com,Belen2020,maria,belen,Usuario
+villa@gmail.com,Villa2020,jesus,villa, Usuario
+gloria@gmail.com,Gloria2020,gloria,gloris,Usuario
+mariaa@gmail.com,Maria2020,mariabelen,mercedez,Usuario
