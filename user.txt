@@ -1,3 +1,4 @@
-camilop024@gmail.com,carlitos20,camilo,andres,Usuario
-camilop024,carlos2020,camilo,rios,Usuario
-gabriel@gmail.com,gabriel20,gabriel,cardona,Usuario
+camilop024@gmail.com,Carlitos20,camilo,andres,Usuario
+gabriel@gmail.com,Gabriel20,gabriel,cardona,Usuario
+pedro@gmail.com,Pedro2020,pedro,perez,Usuario
+

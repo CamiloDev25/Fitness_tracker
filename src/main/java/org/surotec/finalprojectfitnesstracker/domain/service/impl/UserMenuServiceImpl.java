@@ -12,7 +12,7 @@ import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
 
 import javax.sql.rowset.serial.SerialException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -67,7 +67,7 @@ public class UserMenuServiceImpl implements MenuService {
                                     try {
                                         int value = Integer.parseInt(selectOne);
                                         if (value <= i && value > 0) {
-                                            Workout workout = workouts.get(value);
+                                            Workout workout = workouts.get(value -1);
                                             System.out.println("Workout structure: " + workout.getTitle() + "\n" + "Description: " + workout.getDescription() +
                                                     "\n\nExercises");
                                             for (Exercise exercise : workout.getExercises()) {
