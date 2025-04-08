@@ -1,7 +1,5 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
-//import org.surotec.finalprojectfitnesstracker.application.WorkoutController;
-
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
@@ -12,7 +10,6 @@ import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
 
 import javax.sql.rowset.serial.SerialException;
 import java.time.LocalDateTime;
-//import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -67,7 +64,7 @@ public class UserMenuServiceImpl implements MenuService {
                                     try {
                                         int value = Integer.parseInt(selectOne);
                                         if (value <= i && value > 0) {
-                                            Workout workout = workouts.get(value -1);
+                                            Workout workout = workouts.get(value - 1);
                                             System.out.println("Workout structure: " + workout.getTitle() + "\n" + "Description: " + workout.getDescription() +
                                                     "\n\nExercises");
                                             for (Exercise exercise : workout.getExercises()) {
@@ -175,11 +172,11 @@ public class UserMenuServiceImpl implements MenuService {
                                     int totalTime = 0;
                                     for (Exercise exercise : workoutLog.getExerciseList()) {
                                         System.out.println("- " + exercise.getTitle() + ": " + exercise.getTime() + " minutes");
-                                        totalTime = +exercise.getTime();
+                                        totalTime += exercise.getTime();
                                     }
                                     System.out.println("Total Time: " + totalTime);
                                     System.out.println("Calories: " + totalTime * 10);
-                                    System.out.println("\nPress any key to return the workout history...");
+                                    //System.out.println("\nPress any key to return the workout history...");
                                     showWorkoutDetails = false;
 
                                 } else {
@@ -210,69 +207,6 @@ public class UserMenuServiceImpl implements MenuService {
             }
 
         }
-
-
-   /* private void showWorkout(Scanner input) {
-        WorkoutController workoutController = new WorkoutController();
-        List<Workout> workoutList = workoutController.findAll();
-        System.out.println("The available Workouts: ");
-        int i = 1;
-        for (Workout workout : workoutList) {
-            System.out.println(i + ". " + workout.getTitle() + " " + workout.getDescription());
-            i++;
-        }
-
-
-        System.out.println("Please select a workout by entering its number (1-" + (i - 1) + "): or if you regreat write back ");
-        String userInput = input.nextLine();
-        int workoutChoice = 0;
-        try {
-            workoutChoice = Integer.parseInt(userInput);
-
-        } catch (NumberFormatException woC) {
-            returnToMainMenu(input, userInput); //si es una cadena cae aqui. El condicional ya está hecho abajo
-        }
-
-        // get workout selected
-        showWorkoutExercises(input, workoutChoice, i, workoutList);
-    }
-
-    private void returnToMainMenu(Scanner input, String text) {
-        if (isUserMovingBack(text)) {
-            getMainMenu(input);
-        } else {
-            System.out.println("Please choose other option, This is not value ");
-        }
-    }
-
-    private void showWorkoutExercises(Scanner input, int workoutChoice, int i, List<Workout> workoutList) {
-        if (workoutChoice >= 1 && workoutChoice < i) {
-            Workout selectedWorkout = workoutList.get(workoutChoice - 1);
-
-            // workout details
-            System.out.println("\nWorkout Structure: " + selectedWorkout.getTitle());
-            System.out.println("Description: " + selectedWorkout.getDescription());
-            System.out.println("Exercises:");
-
-            // show workout exercises
-            for (Exercise exercise : selectedWorkout.getExercises()) {
-                System.out.println(" - " + exercise.getTitle() + ": " + exercise.getDescription());
-            }
-
-            System.out.println("\nNotes: Ensure proper form and take 1-minute rest between sets.");
-            System.out.println("Write 'back' to return the menu...");
-            String message = input.nextLine();
-            if (isUserMovingBack(message)) {
-                showWorkout(input);
-            } else {
-                System.out.println("Option is not value");
-            }
-
-        } else {
-            System.out.println("Invalid choice, please select a number between 1 and " + (i - 1) + ".");
-        }
-    }*/
-
 
     }
 

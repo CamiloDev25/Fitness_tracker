@@ -3,7 +3,6 @@ package org.surotec.finalprojectfitnesstracker.application.service;
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
 import org.surotec.finalprojectfitnesstracker.domain.repository.IUserRepository;
 import org.surotec.finalprojectfitnesstracker.domain.service.IUserLogin;
-//import org.surotec.finalprojectfitnesstracker.domain.service.IUserRegister;
 
 public class UserLogin implements IUserLogin {
 
