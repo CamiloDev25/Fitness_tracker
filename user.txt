@@ -8,4 +8,4 @@ mateo@gmail.com,Mateo2020,mateo,marin,Usuariomatasanos@gmail.com,Matasanos2020,m
 belen@gmail.com,Belen2020,maria,belen,Usuario
 villa@gmail.com,Villa2020,jesus,villa, Usuario
 gloria@gmail.com,Gloria2020,gloria,gloris,Usuario
-mariaa@gmail.com,Maria2020,mariabelen,mercedez,Usuario
+mariaa@gmail.com,Maria2020,admin,admin,Admin
