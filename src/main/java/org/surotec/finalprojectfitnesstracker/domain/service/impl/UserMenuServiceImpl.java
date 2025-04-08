@@ -1,5 +1,6 @@
 package org.surotec.finalprojectfitnesstracker.domain.service.impl;
 
+import org.surotec.finalprojectfitnesstracker.application.service.WorkoutCreator;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Exercise;
 import org.surotec.finalprojectfitnesstracker.domain.dto.User;
 import org.surotec.finalprojectfitnesstracker.domain.dto.Workout;
@@ -10,6 +11,7 @@ import org.surotec.finalprojectfitnesstracker.domain.service.MenuService;
 
 import javax.sql.rowset.serial.SerialException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -19,11 +21,13 @@ public class UserMenuServiceImpl implements MenuService {
     private IGetWorkouts getWorkouts;
     private IWorkoutLog workoutLog;
     private User user;
+    private WorkoutCreator workoutCreator;
 
-    public UserMenuServiceImpl(IGetWorkouts getWorkouts, IWorkoutLog workoutLog, User user) {
+    public UserMenuServiceImpl(IGetWorkouts getWorkouts, IWorkoutLog workoutLog, User user, WorkoutCreator workoutCreator) {
         this.getWorkouts = getWorkouts;
         this.workoutLog = workoutLog;
         this.user = user;
+        this.workoutCreator = workoutCreator;
     }
 
     public void printMenu(Scanner input) {
@@ -37,7 +41,8 @@ public class UserMenuServiceImpl implements MenuService {
                     "\n- Select a workout you have performed and enter the time taken for each exercise" +
                     "\n\n 3. View Logged Workouts " +
                     "\n- Review your workout history, including details and total time for each exercise" +
-                    "\n\n 4. Exit");
+                    "\n\n 4. Exit" +
+                    "\n\n 5. Create Workout");
 
             try {
                 String selectedOption = input.nextLine();
@@ -201,12 +206,46 @@ public class UserMenuServiceImpl implements MenuService {
 
                     default:
                         throw new SerialException("The option is not available");
+
+                    case "5":
+                        if (user.getRole().equals("Admin")) {
+                            System.out.print("Enter workout title: ");
+                            String title = input.nextLine();
+                            System.out.print("Enter workout description: ");
+                            String description = input.nextLine();
+
+                            List<Exercise> exercises = new ArrayList<>();
+
+                            boolean addingExercises = true;
+                            while (addingExercises) {
+                                System.out.print("Add exercise title (or type 'done' to finish): ");
+                                String exerciseTitle = input.nextLine();
+                                if (exerciseTitle.equalsIgnoreCase("done")) {
+                                    addingExercises = false;
+                                } else {
+                                    System.out.print("Add exercise description: ");
+                                    String exerciseDescription = input.nextLine();
+                                    Exercise exercise = new Exercise();
+                                    exercise.setTitle(exerciseTitle);
+                                    exercise.setDescription(exerciseDescription);
+                                    exercises.add(exercise);
+                                }
+                            }
+
+                            workoutCreator.createWorkout(title, description, exercises);
+                        } else {
+                            System.out.println("You do not have permission to create workouts.");
+                        }
+                        break;
+
                 }
             } catch (SerialException ex) {
-                System.out.println(ex.getMessage()); //message from the throw
+                System.out.println(ex.getMessage());
             }
 
+
         }
+
 
     }
 
